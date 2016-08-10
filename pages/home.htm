@@ -1,0 +1,51 @@
+<div class="row">
+  <form name="myform">
+    <div class="col-md-6 col-md-offset-3">
+      <br>
+      <div class="form-group" >
+        <input type="text" placeholder="github login" ng-model="hc.user"  class="form-control" ng-required = "true"/>
+      </div>
+      <button  ng-click = "hc.add()" type="button" ng-disabled = "myform.$invalid" class = "btn btn-primary">Add</button>
+    </div>
+  </form>
+
+</div>
+
+<hr>
+
+<!-- <div class="row">
+<div class="card" ng-if="hc.cardData"  ng-repeat="x in hc.cardData">
+<img src="{{x.pic}}" alt="Avatar" style="width:20%;height:20%">
+<div class="container">
+<h4><b>{{x.name}}</b></h4>
+<p>Location:{{x.loc}}</p>
+<p>Followers:{{x.fol}}</p>
+</div>
+</div>
+</div> -->
+
+<md-content class="md-padding" layout-xs="column" layout="row">
+  <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card ng-if="hc.cardData"  ng-repeat="x in hc.cardData" >
+      <img ng-src="{{x.pic}}" class="md-card-image" alt="Washed Out">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{x.name}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>
+          Location:{{x.loc}}
+        </p>
+        <p>
+          Followers:{{x.fol}}
+        </p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click = "hc.delete(card)"><i class="material-icons">delete</i></md-button>
+        <md-button>Got to Profile</md-button>
+
+      </md-card-actions>
+    </md-card>
+  </div>
+</md-content>
