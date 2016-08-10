@@ -1,41 +1,42 @@
-<div class="row">
+<div  layout="column" layout-padding ng-cloak>
+  <br/>
   <form name="myform">
-    <div class="col-md-6 col-md-offset-3">
-      <br>
-      <div class="form-group" >
-        <input type="text" placeholder="github login" ng-model="hc.user"  class="form-control" ng-required = "true"/>
-      </div>
-      <button  ng-click = "hc.add()" type="button" ng-disabled = "myform.$invalid" class = "btn btn-primary">Add</button>
-    </div>
+    <md-content class="md-no-momentum">
+      <md-input-container class="md-icon-float md-block">
+        <md-icon><i class="material-icons">person_add</i></md-icon>
+        <input required  placeholder="Github Login*" ng-model="hc.user"/>
+      </md-input-container>
+      <md-button ng-click = "hc.add()" ng-disabled = "myform.$invalid" class="md-raised">Add</md-button>
+    </md-content>
   </form>
-
 </div>
 
-<hr>
 
-
-<md-content class="md-padding" layout-xs="column" layout="row">
-  <div flex = "33" ng-if="hc.cardData"  ng-repeat="card in hc.cardData" layout="row">
-    <md-card >
-      <img ng-src="{{card.pic}}" class="md-card-image" alt="Washed Out">
+<div ng-if="hc.cardData" layout="column" layout-gt-sm="row" layout-wrap>
+  <div flex="33" ng-repeat="card in hc.cardData">
+    <md-card style="height:200px">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">{{card.name}}</span>
+          <span class="md-subhead">
+            <p>
+              Location:{{card.loc}}
+            </p>
+            <p>
+              Followers:{{card.fol}}
+            </p>
+          </span>
         </md-card-title-text>
+        <md-card-title-media>
+          <div class="md-media-md card-media">
+            <img ng-src="{{card.pic}}" class="md-card-image" alt="Washed Out">
+          </div>
+        </md-card-title-media>
       </md-card-title>
-      <md-card-content>
-        <p>
-          Location:{{card.loc}}
-        </p>
-        <p>
-          Followers:{{card.fol}}
-        </p>
-      </md-card-content>
       <md-card-actions layout="row" layout-align="end center">
         <md-button ><i ng-click = "hc.delete(card)" class="material-icons">delete</i></md-button>
         <md-button target="_blank" href = "{{card.url}}">Got to Profile</md-button>
-
       </md-card-actions>
     </md-card>
   </div>
-</md-content>
+</div>
