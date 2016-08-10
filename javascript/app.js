@@ -37,11 +37,10 @@ myApp.controller('homeController',['$scope', '$firebaseArray','myService',functi
         this.name = res.data.name;
         this.loc = res.data.location;
         this.fol = res.data.followers;
-        
+        this.url = res.data.html_url;
       }
 
       vm.newCard = new card();
-
       vm.cardData.$add(vm.newCard);
       console.log(vm.newCard);
     });
@@ -51,5 +50,6 @@ myApp.controller('homeController',['$scope', '$firebaseArray','myService',functi
     vm.cardData.$remove(card);
     console.log("fajnjn");
   }
+
 
 }]);
