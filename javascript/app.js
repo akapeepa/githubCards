@@ -46,8 +46,9 @@ myApp.controller('homeController',['$scope', '$firebaseArray','myService',functi
     });
   }
 
-  vm.delete = function(card){
+  $scope.delete = function(card){
     vm.cardData.$remove(card);
+    console.log("dksnkl");
   }
 
 
