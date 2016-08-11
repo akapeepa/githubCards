@@ -48,8 +48,17 @@ myApp.controller('homeController',['$scope', '$firebaseArray','myService',functi
 
   vm.delete = function(card){
     vm.cardData.$remove(card);
-    console.log("fajnjn");
   }
 
+
+  $scope.propertyName = 'name';
+  $scope.reverse = true;
+  $scope.cardData = vm.cardData;
+
+
+  vm.sortBy = function(propertyName) {
+    $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+    $scope.propertyName = propertyName;
+  };
 
 }]);
