@@ -11,9 +11,26 @@
   </form>
 </div>
 
+<th>
+  <md-button ng-disabled="true" style="color:BLACK;">Sort :</md-button>
+</th>
+<th>
+  <md-button ng-click="hc.sortBy('name')">Name</md-button>
+  <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+</th>
+<th>
+  <md-button ng-click="hc.sortBy('loc')">Location</md-button>
+  <span class="sortorder" ng-show="propertyName === 'loc'" ng-class="{reverse: reverse}"></span>
+</th>
+<th>
+  <md-button ng-click="hc.sortBy('fol')">Followers</md-button>
+  <span class="sortorder" ng-show="propertyName === 'fol'" ng-class="{reverse: reverse}"></span>
+</th>
+
+<hr>
 
 <div ng-if="hc.cardData" layout="column" layout-gt-sm="row" layout-wrap>
-  <div flex="33" ng-repeat="card in hc.cardData">
+  <div flex="33" ng-repeat="card in hc.cardData | orderBy:propertyName:reverse">
     <md-card style="height:200px">
       <md-card-title>
         <md-card-title-text>
